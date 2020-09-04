@@ -2,12 +2,22 @@
 
 use Medoo\Medoo;
 require_once '../vendor/autoload.php';
+require '../src/Comment.php';
 require '../vendor/catfan/medoo/src/Medoo.php';
 
 $database = new Medoo([
     'database_type' => 'sqlite',
     'database_file' => '../storage/database.db'
 ]);
+
+
+
+$comment = new Comment($database);
+$comment->setEmail('bruno@skvorc.me')
+  ->setName('Bruno Skvorc')
+  ->setComment('It works!')
+  ->setComment('Hooray! Saving comments works!')
+  ->save();
 
 ?>
 
